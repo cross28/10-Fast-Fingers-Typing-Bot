@@ -1,14 +1,21 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen as uReq
-import os
-import json
 import webbrowser
+from selenium import webdriver
 
 siteurl = 'https://10fastfingers.com/typing-test/english'
 
-#connecting to page
+#Setting up test browser
+driver = webdriver.Chrome()
+driver.get(siteurl)
+driver.implicitly_wait(15)
+pbutton = driver.find_element_by_class_name('highlight')
+print(pbutton.text)
+'''
+#connecting to page and parsing
 site = uReq(siteurl)
 site_html = site.read()
-
 soup = BeautifulSoup(site_html, 'html.parser')
-print(soup.findAll('div',{'id':'ow1'}))
+
+print(soup.findAll('span',{'class':'highlight'}))
+'''
