@@ -1,12 +1,15 @@
 from bs4 import BeautifulSoup
-import urllib3
-import requests
+from urllib.request import urlopen as uReq
 import os
 import webbrowser
 
-url = 'https://10fastfingers.com/typing-test/english'
-req = requests.get(url)
-soup = BeautifulSoup(req.text, 'html.parser')
-p = soup.find('span',class_='highlight')
+siteurl = 'https://10fastfingers.com/typing-test/english'
 
-print(p)
+#connecting to page
+site = uReq(siteurl)
+site_html = site.read()
+site.close()
+print(site_html)
+soup = BeautifulSoup(site_html, 'html.parser')
+
+
