@@ -1,5 +1,3 @@
-from bs4 import BeautifulSoup
-from urllib.request import urlopen as uReq
 import webbrowser
 from selenium import webdriver
 
@@ -11,7 +9,12 @@ driver.get(siteurl)
 driver.implicitly_wait(15)
 pbutton = driver.find_element_by_class_name('highlight')
 print(pbutton.text)
-'''
+
+''' PERSONAL REFERENCE TO BEAUTIFUL SOUP AND REQUESTS
+
+from bs4 import BeautifulSoup
+from urllib.request import urlopen as uReq
+
 #connecting to page and parsing
 site = uReq(siteurl)
 site_html = site.read()
