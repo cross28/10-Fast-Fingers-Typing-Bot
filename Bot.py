@@ -1,14 +1,34 @@
 import webbrowser
+from bs4 import BeautifulSoup
+from urllib.request import urlopen as uReq
 from selenium import webdriver
+from pynput.keyboard import Key, Controller
+import time
 
 siteurl = 'https://10fastfingers.com/typing-test/english'
+
+keyboard = Controller()
+
 
 #Setting up test browser
 driver = webdriver.Chrome()
 driver.get(siteurl)
 driver.implicitly_wait(15)
-pbutton = driver.find_element_by_class_name('highlight')
-print(pbutton.text)
+
+#Getting html data
+siteReq = uReq(siteurl)
+site = siteReq.read()
+soup = BeautifulSoup(site, 'html.parser')
+inputField = soup.findAll('')
+
+word = driver.find_element_by_class_name('highlight')
+while True:
+    for a in word.text:
+        keyboard.press(a)
+        keyboard.release(a)
+        time.sleep(0.05)
+    keyboard.press(' ')
+    time.sleep(.1)
 
 ''' PERSONAL REFERENCE TO BEAUTIFUL SOUP AND REQUESTS
 
