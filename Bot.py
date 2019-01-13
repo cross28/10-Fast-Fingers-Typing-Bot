@@ -3,13 +3,12 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen as uReq
 from selenium import webdriver
 from pynput.keyboard import Key, Controller
-import pynput.mouse as pymouse
+import msvcrt
 import time
 
 siteurl = 'https://10fastfingers.com/typing-test/english'
 
 keyboard = Controller()
-mouse = pymouse.Controller()
 
 #Setting up test browser
 driver = webdriver.Chrome()
@@ -21,18 +20,16 @@ siteReq = uReq(siteurl)
 site = siteReq.read()
 soup = BeautifulSoup(site, 'html.parser')
 
-inputField = soup.findAll('span',{'class':'inputfield'})
-word = driver.find_element_by_class_name('highlight')
+#word = soup.findAll('div',{'class':'highlight'})
+#inputField = soup.findAll('span', {'class': 'inputfield'})
 
-time.sleep(3)
 while True:
-    soup.
+    word = driver.find_element_by_class_name('highlight')
     for a in word.text:
         keyboard.press(a)
         keyboard.release(a)
-        time.sleep(0.05)
     keyboard.press(' ')
-    time.sleep(.1)
+
 
 ''' PERSONAL REFERENCE TO BEAUTIFUL SOUP AND REQUESTS
 
