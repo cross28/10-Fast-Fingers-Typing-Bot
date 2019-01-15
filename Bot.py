@@ -1,6 +1,5 @@
 from selenium import webdriver
 from pynput.keyboard import Key, Controller
-import time
 
 siteurl = 'https://10fastfingers.com/typing-test/english'
 
