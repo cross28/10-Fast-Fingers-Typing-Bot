@@ -1,4 +1,3 @@
-import webbrowser
 from selenium import webdriver
 from pynput.keyboard import Key, Controller
 import time
